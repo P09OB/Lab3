@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cons"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2D3145"
+    tools:context=".notas">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConstraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="86dp"
+            android:layout_marginEnd="269dp"
+            android:text="Clculo de notas"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/parcial1EditT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="101dp"
+            android:layout_marginEnd="104dp"
+            android:layout_marginBottom="31dp"
+            android:ems="10"
+            android:hint="Parcial 1"
+            android:inputType="textPersonName|numberDecimal"
+            android:numeric="decimal"
+            android:textAlignment="viewStart"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="#FFFFFF"
+            android:textColorHint="#6FFFFFFF"
+            android:textIsSelectable="false"
+            app:layout_constraintBottom_toTopOf="@+id/parcial2EditT"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/proyecto2EditT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="101dp"
+            android:layout_marginEnd="104dp"
+            android:layout_marginBottom="100dp"
+            android:ems="10"
+            android:hint="Proyecto Parcial 2"
+            android:inputType="number|textPersonName|numberDecimal"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="#FFFFFF"
+            android:textColorHint="#70FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/ejerciciosEditT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="101dp"
+            android:layout_marginEnd="104dp"
+            android:layout_marginBottom="43dp"
+            android:ems="10"
+            android:hint="Ejercicios Semanales"
+            android:inputType="number|textPersonName|numberDecimal"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#70FFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/proyecto1EditT"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/parcial2EditT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="101dp"
+            android:layout_marginEnd="104dp"
+            android:layout_marginBottom="34dp"
+            android:ems="10"
+            android:hint="Parcial 2"
+            android:inputType="textPersonName|numberDecimal"
+            android:numeric="decimal"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="#FFFFFF"
+            android:textColorHint="#70FFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/quizEditT"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/quizEditT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="101dp"
+            android:layout_marginEnd="104dp"
+            android:layout_marginBottom="40dp"
+            android:ems="10"
+            android:hint="Quices Practicos"
+            android:inputType="textShortMessage|textPersonName|numberDecimal"
+            android:numeric="decimal"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#70FFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/ejerciciosEditT"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/proyecto1EditT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="101dp"
+            android:layout_marginEnd="104dp"
+            android:layout_marginBottom="43dp"
+            android:ems="10"
+            android:hint="Proyecto Parcial 1"
+            android:inputType="textPersonName|numberDecimal"
+            android:textColorHighlight="#FFFFFF"
+            android:textColorHint="#70FFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/proyecto2EditT"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/calcularbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="165dp"
+            android:layout_marginEnd="162dp"
+            android:layout_marginBottom="28dp"
+            android:text="Calcular"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
