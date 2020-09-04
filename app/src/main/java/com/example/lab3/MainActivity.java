@@ -38,25 +38,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         nextBut.setOnClickListener(this);
         confiButt.setOnClickListener(this);
 
-        i = new Intent(this,notas.class);
-
-        seleccion = getSharedPreferences("mandar",MODE_PRIVATE).getString("seleccion","NO USER");
-
-
-        if(seleccion == "VIOLETA"){
-
-            fondoConstranintLayout.setBackgroundColor(Color.rgb(92, 55, 76));
-
-
-        } else if(seleccion == "YELLOW"){
-            fondoConstranintLayout.setBackgroundColor(Color.rgb(252, 163, 28));
-        } else if (seleccion == "ORANGE"){
-            fondoConstranintLayout.setBackgroundColor(Color.rgb(255, 120, 71));
-        }
-
-
-
-
 
     }
 
@@ -68,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
            case R.id.nextBut:
 
                String nameUser = nameText.getText().toString();
-               Log.e("probar",""+nameUser);
+               i = new Intent(this,notas.class);
                startActivity(i);
                SharedPreferences preferences = getSharedPreferences("name",MODE_PRIVATE);
                preferences.edit().putString("username",nameUser).apply();
@@ -89,5 +70,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        seleccion = getSharedPreferences("mandar",MODE_PRIVATE).getString("seleccion","NO USER");
+
+
+        if(seleccion == "VIOLETA"){
+
+            fondoConstranintLayout.setBackgroundColor(Color.rgb(92, 55, 76));
+
+
+        } else if(seleccion == "YELLOW"){
+            fondoConstranintLayout.setBackgroundColor(Color.rgb(252, 163, 28));
+        } else if (seleccion == "ORANGE"){
+            fondoConstranintLayout.setBackgroundColor(Color.rgb(255, 120, 71));
+        }
+
+
+    }
 }

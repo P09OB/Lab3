@@ -38,7 +38,6 @@ public class configuracion extends AppCompatActivity implements View.OnClickList
         colo2but.setOnClickListener(this);
         colo3but.setOnClickListener(this);
 
-        i = new Intent(this,MainActivity.class);
 
 
     }
@@ -46,15 +45,15 @@ public class configuracion extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
 
+        i = new Intent(this,MainActivity.class);
+        startActivity(i);
+
         switch (view.getId()){
 
             case R.id.color1but:
 
                 color = "YELLOW";
-
-                startActivity(i);
                 fondoLayout.setBackgroundColor(Color.rgb(252, 163, 28));
-
 
                 break;
 
@@ -63,7 +62,6 @@ public class configuracion extends AppCompatActivity implements View.OnClickList
                 color = "ORANGE";
                 startActivity(i);
                 fondoLayout.setBackgroundColor(Color.rgb(255, 120, 71));
-
 
                 break;
 
@@ -74,17 +72,14 @@ public class configuracion extends AppCompatActivity implements View.OnClickList
                 startActivity(i);
                 fondoLayout.setBackgroundColor(Color.rgb(92, 55, 76));
 
-
-
                 break;
-
-
-
 
         }
 
         SharedPreferences preferences = getSharedPreferences("mandar",MODE_PRIVATE);
         preferences.edit().putString("seleccion",color).apply();
+
+        finish();
 
     }
 

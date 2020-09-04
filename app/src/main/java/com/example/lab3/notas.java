@@ -30,6 +30,7 @@ public class notas extends AppCompatActivity implements View.OnClickListener{
     private String resultado;
     private ConstraintLayout fondoLayout;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,11 +43,12 @@ public class notas extends AppCompatActivity implements View.OnClickListener{
         ejerciciosEditT =findViewById(R.id.ejerciciosEditT);
         proyecto1EditT =findViewById(R.id.proyecto1EditT);
         proyecto2EditT =findViewById(R.id.proyecto2EditT);
-        fondoLayout = findViewById(R.id.ConstraintLayout);
+        fondoLayout = findViewById(R.id.cons);
 
         calcularbutton.setOnClickListener(this);
 
-        String seleccion = getSharedPreferences("mandar",MODE_PRIVATE).getString("seleccion","NO USER");
+
+       String seleccion = getSharedPreferences("mandar",MODE_PRIVATE).getString("seleccion","NO USER");
 
 
         if(seleccion == "VIOLETA"){
@@ -63,8 +65,8 @@ public class notas extends AppCompatActivity implements View.OnClickListener{
 
         }
 
-
     }
+
 
     public void calcularNotas(){
 
@@ -83,13 +85,6 @@ public class notas extends AppCompatActivity implements View.OnClickListener{
         double notaDouble6 = Double.parseDouble(notaStrg6);
 
 
-        if(nota1 >= 0.0){
-
-           parcial1EditT.setBackgroundColor(Color.RED);
-
-        }
-
-
         nota1 = (notaDouble1*0.15);
         nota2 = (notaDouble2*0.15);
         nota3 = (notaDouble3*0.15);
@@ -98,7 +93,6 @@ public class notas extends AppCompatActivity implements View.OnClickListener{
         nota6 = (notaDouble6*0.25);
 
         total = nota1+nota2+nota3+nota4+nota5+nota6;
-
 
     }
 
@@ -110,10 +104,7 @@ public class notas extends AppCompatActivity implements View.OnClickListener{
             case R.id.calcularbutton:
 
 
-
-
                     calcularNotas();
-
                     Intent i = new Intent(this,resultado.class);
                     startActivity(i);
 
@@ -122,17 +113,6 @@ public class notas extends AppCompatActivity implements View.OnClickListener{
                     preferences.edit().putString("total", resultado).apply();
 
                     finish();
-
-
-
-
-
-
-
-
-
-
-
 
                 break;
         }

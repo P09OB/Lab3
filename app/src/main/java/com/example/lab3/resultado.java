@@ -35,7 +35,7 @@ public class resultado extends AppCompatActivity implements View.OnClickListener
         volverButton.setOnClickListener(this);
 
 
-        String preferencesColor = getSharedPreferences("mandar",MODE_PRIVATE).getString("seleccion","NO USER");
+       String preferencesColor = getSharedPreferences("mandar",MODE_PRIVATE).getString("seleccion","NO USER");
 
 
         if(preferencesColor == "VIOLETA"){
