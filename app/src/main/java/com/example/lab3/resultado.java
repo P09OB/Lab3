@@ -20,6 +20,7 @@ public class resultado extends AppCompatActivity implements View.OnClickListener
     private TextView resultadoTextView;
     private TextView nameTextView;
     private ConstraintLayout fondoLayout;
+    private boolean vacio = false;
 
 
     @Override
@@ -52,6 +53,8 @@ public class resultado extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onClick(View view) {
 
+        vacio = true;
+
         finish();
     }
 
@@ -62,6 +65,9 @@ public class resultado extends AppCompatActivity implements View.OnClickListener
         SharedPreferences preferences = getSharedPreferences("name",MODE_PRIVATE);
         String username = preferences.getString("username","NO USER");
         nameTextView.setText("Hola,"+" "+username+"."+" "+"Tu nota final es de:");
+        if( vacio == true){
+         username = " ";
+         }
 
         SharedPreferences preferencesNota = getSharedPreferences("resultado",MODE_PRIVATE);
         String notaFinal = preferencesNota.getString("total","No total");

@@ -40,6 +40,8 @@ public class configuracion extends AppCompatActivity implements View.OnClickList
 
 
 
+
+
     }
 
     @Override
@@ -79,7 +81,8 @@ public class configuracion extends AppCompatActivity implements View.OnClickList
         SharedPreferences preferences = getSharedPreferences("mandar",MODE_PRIVATE);
         preferences.edit().putString("seleccion",color).apply();
 
-        finish();
+
+
 
     }
 
