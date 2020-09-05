@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static android.graphics.Color.*;
 
@@ -21,9 +22,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button nextBut;
     private Button confiButt;
     private ConstraintLayout fondoConstranintLayout;
-    String seleccion;
     private Intent i;
-
+    private String seleccion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         nextBut.setOnClickListener(this);
         confiButt.setOnClickListener(this);
 
-
     }
 
     @Override
@@ -49,10 +48,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
            case R.id.nextBut:
 
                String nameUser = nameText.getText().toString();
-               i = new Intent(this,notas.class);
-               startActivity(i);
-               SharedPreferences preferences = getSharedPreferences("name",MODE_PRIVATE);
-               preferences.edit().putString("username",nameUser).apply();
+               if(nameUser.trim().isEmpty()){
+                   Toast.makeText(this,"Falta ingresar el nombre",Toast.LENGTH_LONG).show();
+
+               } else {
+
+                   i = new Intent(this,notas.class);
+                   startActivity(i);
+                   SharedPreferences preferences = getSharedPreferences("name",MODE_PRIVATE);
+                   preferences.edit().putString("username",nameUser).apply();
+               }
 
                break;
 
@@ -60,31 +65,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                Intent n = new Intent(this,configuracion.class);
                startActivity(n);
-
                break;
-
-
        }
-
-
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        seleccion = getSharedPreferences("mandar",MODE_PRIVATE).getString("seleccion","NO USER");
+        SharedPreferences colorPreferences = getSharedPreferences("mandar",MODE_PRIVATE);
+        seleccion= colorPreferences.getString("seleccion", "NO_COLOR");
 
 
-        if(seleccion == "VIOLETA"){
+        if(seleccion.equals("BLUE")){
+            fondoConstranintLayout.setBackgroundColor(Color.rgb(45, 49, 69));
+        }
+        if(seleccion.equals("VIOLETA")){
 
             fondoConstranintLayout.setBackgroundColor(Color.rgb(92, 55, 76));
-
-
-        } else if(seleccion == "YELLOW"){
+        }
+        if(seleccion.equals("YELLOW")){
             fondoConstranintLayout.setBackgroundColor(Color.rgb(252, 163, 28));
-        } else if (seleccion == "ORANGE"){
+        }
+        if (seleccion.equals("ORANGE")){
             fondoConstranintLayout.setBackgroundColor(Color.rgb(255, 120, 71));
         }
 

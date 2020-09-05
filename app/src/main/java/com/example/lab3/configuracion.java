@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -17,9 +18,9 @@ public class configuracion extends AppCompatActivity implements View.OnClickList
     private Button colo2but;
     private Button colo3but;
     private ConstraintLayout fondoLayout;
-    private String color;
+    private String color, color2;
 
-    private Intent i;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,30 +33,46 @@ public class configuracion extends AppCompatActivity implements View.OnClickList
         colo3but = findViewById(R.id.color3but);
         fondoLayout = findViewById(R.id.fondoConstranintLayout);
 
-
+        SharedPreferences colorPreferences = getSharedPreferences("mandar",MODE_PRIVATE);
+        color2= colorPreferences.getString("seleccion", "NO_COLOR");
+        color();
 
         colo1but.setOnClickListener(this);
         colo2but.setOnClickListener(this);
         colo3but.setOnClickListener(this);
 
+    }
 
+    public void color(){
 
+        if(color2.equals("BLUE")){
+            fondoLayout.setBackgroundColor(Color.rgb(45, 49, 69));
+        }
 
-
+        if(color2.equals("VIOLETA")){
+            fondoLayout.setBackgroundColor(Color.rgb(92, 55, 76));
+        }
+        if(color2.equals("YELLOW")){
+            fondoLayout.setBackgroundColor(Color.rgb(252, 163, 28));
+        }
+        if (color2.equals("ORANGE")){
+            fondoLayout.setBackgroundColor(Color.rgb(255, 120, 71));
+        }
     }
 
     @Override
     public void onClick(View view) {
 
-        i = new Intent(this,MainActivity.class);
-        startActivity(i);
+        Intent  i = new Intent(this,MainActivity.class);
+
 
         switch (view.getId()){
 
             case R.id.color1but:
 
                 color = "YELLOW";
-                fondoLayout.setBackgroundColor(Color.rgb(252, 163, 28));
+                color();
+                startActivity(i);
 
                 break;
 
@@ -63,7 +80,7 @@ public class configuracion extends AppCompatActivity implements View.OnClickList
 
                 color = "ORANGE";
                 startActivity(i);
-                fondoLayout.setBackgroundColor(Color.rgb(255, 120, 71));
+                color();
 
                 break;
 
@@ -72,7 +89,7 @@ public class configuracion extends AppCompatActivity implements View.OnClickList
                 color = "VIOLETA";
 
                 startActivity(i);
-                fondoLayout.setBackgroundColor(Color.rgb(92, 55, 76));
+                color();
 
                 break;
 
@@ -82,9 +99,6 @@ public class configuracion extends AppCompatActivity implements View.OnClickList
         preferences.edit().putString("seleccion",color).apply();
 
 
-
-
     }
-
 
 }

@@ -20,8 +20,6 @@ public class resultado extends AppCompatActivity implements View.OnClickListener
     private TextView resultadoTextView;
     private TextView nameTextView;
     private ConstraintLayout fondoLayout;
-    private boolean vacio = false;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,27 +32,10 @@ public class resultado extends AppCompatActivity implements View.OnClickListener
         fondoLayout = findViewById(R.id.cons);
 
         volverButton.setOnClickListener(this);
-
-
-       String preferencesColor = getSharedPreferences("mandar",MODE_PRIVATE).getString("seleccion","NO USER");
-
-
-        if(preferencesColor == "VIOLETA"){
-            fondoLayout.setBackgroundColor(Color.rgb(92, 55, 76));
-        } else if(preferencesColor == "YELLOW"){
-            fondoLayout.setBackgroundColor(Color.rgb(252, 163, 28));
-        } else if (preferencesColor == "ORANGE"){
-            fondoLayout.setBackgroundColor(Color.rgb(255, 120, 71));
-        }
-
-
     }
 
     @Override
     public void onClick(View view) {
-
-        vacio = true;
-
         finish();
     }
 
@@ -65,13 +46,30 @@ public class resultado extends AppCompatActivity implements View.OnClickListener
         SharedPreferences preferences = getSharedPreferences("name",MODE_PRIVATE);
         String username = preferences.getString("username","NO USER");
         nameTextView.setText("Hola,"+" "+username+"."+" "+"Tu nota final es de:");
-        if( vacio == true){
-         username = " ";
-         }
+
 
         SharedPreferences preferencesNota = getSharedPreferences("resultado",MODE_PRIVATE);
         String notaFinal = preferencesNota.getString("total","No total");
         resultadoTextView.setText(notaFinal+"");
+
+
+        SharedPreferences colorPreferences = getSharedPreferences("mandar",MODE_PRIVATE);
+        String seleccion= colorPreferences.getString("seleccion", "NO_COLOR");
+
+
+        if(seleccion.equals("BLUE")){
+            fondoLayout.setBackgroundColor(Color.rgb(45, 49, 69));
+        }
+        if(seleccion.equals("VIOLETA")){
+
+            fondoLayout.setBackgroundColor(Color.rgb(92, 55, 76));
+        }
+        if(seleccion.equals("YELLOW")){
+            fondoLayout.setBackgroundColor(Color.rgb(252, 163, 28));
+        }
+        if (seleccion.equals("ORANGE")){
+            fondoLayout.setBackgroundColor(Color.rgb(255, 120, 71));
+        }
 
 
     }
